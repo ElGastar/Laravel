@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\indexController;
 use Illuminate\Support\Facades\Route;
 
@@ -26,10 +27,7 @@ Route::get('/withParam/{name}', function($name){
     return view('hello');
 });
 
-Route::group(['prefix' => 'news'], function(){
-Route::get('/',[indexController::class,'index'])->name("news.index");
-Route::get('/create',[indexController::class,'create'])->name("news.create");
-Route::get('/edit/{id}',[indexController::class,'edit'])->where('id','\d+')->name("news.edit");//where проверяет id,должен быть целым числом
-Route::get('/delete/{id}',[indexController::class,'delete'])->name("news.delete");
+Route::group(['prefix' => 'admin'], function(){
+Route::resource('news',NewsController::class);
 });
 
