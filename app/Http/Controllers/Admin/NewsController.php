@@ -20,11 +20,11 @@ class NewsController extends Controller
      */
     public function index()
     {
-        echo "<a href='" . route('news.create') . "'>Add news</h2></br>";
-        foreach ($this->news as $k => $new) {
-$k++;
-            echo $new." <a href='".route('news.edit', ['news' => $k])."'> edit</a></br>";//ключ news скорее связано сназыванием контроллера
-        }
+        return view('admin.news.index',
+        [
+            'news'=>$this->news,
+        ]
+    );
     }
 
     /**
@@ -34,7 +34,7 @@ $k++;
      */
     public function create()
     {
-        return "<h2>Add news</h2> </br> <a href='" . route("news.index") . "'>Home</a>";
+        return view('admin.news.create');
     }
 
     /**
@@ -67,8 +67,9 @@ $k++;
      */
     public function edit($id)
     {
-        echo "edit news #$id";
-        echo "</br><a href='" . route("news.index") . "'>Home</a>";
+        return view('admin.news.edit',[
+            'id'=>$id,
+        ]);
     }
 
     /**
