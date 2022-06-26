@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\NewsController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\indexController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,9 +24,7 @@ Route::get('/hello', function(){
  return view('hello');
 });
 
-Route::get('/withParam/{name}', function($name){
-    return view('hello');
-});
+Route::get('/adminLte', [AdminController::class,'admin']);
 
 Route::group(['prefix' => 'admin'], function(){
 Route::resource('news',NewsController::class);
