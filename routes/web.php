@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Main\IndexController;
+use App\Http\Controllers\Main\StoreController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,6 +22,7 @@ Route::get('/hello', function(){
 });
 
 Route::get('/', IndexController::class)->name('main.index');
+Route::get('/store', StoreController::class)->name('main.store');
 
 Route::group(['prefix' => 'admin'], function(){
 Route::resource('news',NewsController::class);
