@@ -146,7 +146,7 @@
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{{route('main.index')}}" class="nav-link">
             <i class="nav-icon fas fa-shopping-bag"></i>
               <p>
                Заказы
@@ -154,7 +154,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{{route('main.store')}}" class="nav-link">
             <i class="nav-icon fas fa-tshirt"></i>
               <p>
                 Продукты
@@ -221,20 +221,20 @@
 
 
 <!-- jQuery -->
-<script src="js/jquery.min.js"></script>
+<script src="{{asset('js/jquery.min.js')}}"></script>
 <!-- jQuery UI 1.11.4 -->
-<script src="js/jquery-ui.min.js"></script>
+<script src="{{asset('js/jquery-ui.min.js')}}"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
   $.widget.bridge('uibutton', $.ui.button)
 </script>
 <!-- Bootstrap 4 -->
-<script src="js/bootstrap.bundle.min.js"></script>
+<script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
 
 <!-- overlayScrollbars -->
-<script src="js/jquery.overlayScrollbars.min.js"></script>
+<script src="{{asset('js/jquery.overlayScrollbars.min.js')}}"></script>
 <!-- AdminLTE App -->
-<script src="js/adminlte.js"></script>
+<script src="{{asset('js/adminlte.js')}}"></script>
 
 </body>
 </html>
