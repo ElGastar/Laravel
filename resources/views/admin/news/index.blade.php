@@ -1,3 +1,5 @@
+@extends('layouts.main')
+@section('content')
 <a href='{{ route("news.create") }} '>Add news</h2></a>
 </br>
 
@@ -11,3 +13,4 @@ have not news
 
 @endforelse
 
+@endsection

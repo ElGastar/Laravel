@@ -45,7 +45,7 @@ class NewsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request->email ? "your email " .$request->email : "enter your email") ;
     }
 
     /**
