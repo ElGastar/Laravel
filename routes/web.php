@@ -16,3 +16,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+/**
+ * Функция принимает два параметра первый url, второй анонимная функция
+ * @return strung
+ *
+*/
+Route::get('/my_page',function(){
+    return 'text';
+});
