@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MyFirstController;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,16 +13,15 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', function () {
     return view('welcome');
 });
 
 /**
  * Функция принимает два параметра первый url, второй анонимная функция
- * @return strung
+ * или класс контреллер
+ * можно писть "MyFirstController@index" вместо массива [MyFirstController::class,"index"]
+ * @return void
  *
 */
-Route::get('/my_page',function(){
-    return 'text';
-});
+Route::get('/my_page',[MyFirstController::class,"index"]);
