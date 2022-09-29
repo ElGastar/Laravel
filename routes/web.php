@@ -20,7 +20,7 @@ Route::get('/', function () {
 /**
  * Функция принимает два параметра первый url, второй анонимная функция
  * или класс контреллер
- * можно писть "MyFirstController@index" вместо массива [MyFirstController::class,"index"]
+ * можно писать "MyFirstController@index" вместо массива [MyFirstController::class,"index"]
  * @return void
  *
 */
