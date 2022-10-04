@@ -54,8 +54,8 @@ class PostController extends Controller
        dd("updated");
    }
    public function delete(){
-       $post = Post::find(3);
-       $post->delete();
+       $post = Post::find(2);
+       $post->delete();// жесткое удаления , если не находит запись с id 3 выдает ошибку
        dd("deleted");
    }
 }
