@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MyFirstController;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,4 +25,5 @@ Route::get('/', function () {
  * @return void
  *
 */
-Route::get('/my_page',[MyFirstController::class,"index"]);
+Route::get('/post',[PostController::class,"index"]);
+
