@@ -29,4 +29,5 @@ Route::get('/post',[PostController::class,"index"]);
 Route::get('/post/create',[PostController::class,"create"]);
 Route::get('/post/update',[PostController::class,"update"]);
 Route::get('/post/delete',[PostController::class,"delete"]);
+Route::get('/post/first_Or_Create',[PostController::class,"first_Or_Create"]);
 

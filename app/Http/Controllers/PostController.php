@@ -58,4 +58,21 @@ class PostController extends Controller
        $post->restore();// жесткое удаления , если не находит запись с id 3 выдает ошибку
        dd("deleted");
    }
+   /**
+    * первый параметр ищет сответствующий запись , если не находит, создает новий запись соответствующий второму параметру
+    */
+   public function first_Or_Create(){
+
+       $post = Post::firstOrCreate([
+           'title' => 'title'
+       ],
+       [
+           'title'        => ' an new title',
+           'images'       => ' annew image',
+           'content'      => 'an new content',
+           'likes'        => 0,
+           'is_published' =>1,
+       ]);
+       dd("Created");
+   }
 }
