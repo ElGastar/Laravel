@@ -10,7 +10,12 @@ use App\Models\Post;
 class PostController extends Controller
 {
    public function index(){
-       $post = Post::find('1');
-       dd($post->id);// id называния колонки таблицы в бд
+      // $posts = Post::all();// Возвращает тип Collection
+      $posts=Post::where('is_published',1)->first()->get(); //get возвращет тип Collection
+
+       foreach($posts as $post){
+       dump($post->is_published);
+       }
+       dd("end");
    }
 }
