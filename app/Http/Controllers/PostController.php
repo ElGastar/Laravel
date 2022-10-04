@@ -45,4 +45,17 @@ class PostController extends Controller
         dd('created');
 
    }
+   public function update(){
+       $post=Post::find(3);
+       $post->update([
+           'title' => 'title is updated',
+           'likes' => 100, //можно все данные обновить или только некоторые
+       ]);
+       dd("updated");
+   }
+   public function delete(){
+       $post = Post::find(3);
+       $post->delete();
+       dd("deleted");
+   }
 }
