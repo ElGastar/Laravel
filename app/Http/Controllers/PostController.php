@@ -75,4 +75,22 @@ class PostController extends Controller
        ]);
        dd("Created");
    }
+
+
+   public function update_Or_Create(){
+/**
+ * обновляет запись если находит , если нет то создает
+*/
+    $post = Post::updateOrCreate([
+        'title' => 'new title'
+    ],
+    [
+        'title'        => ' updated',
+        'images'       => ' updated image',
+        'content'      => 'updated content',
+        'likes'        => 0,
+        'is_published' =>1,
+    ]);
+    dd("Created");
+}
 }
