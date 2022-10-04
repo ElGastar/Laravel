@@ -18,4 +18,31 @@ class PostController extends Controller
        }
        dd("end");
    }
+
+   public function create(){
+        $arrayItem = [
+            0 => [
+                'title'        => 'new title',
+                'images'       => 'new image',
+                'content'      => 'new content',
+                'likes'        => 4,
+                'is_published' =>1,
+
+            ],
+            1 => [
+                'title'        => ' another new title',
+                'images'       => ' another new image',
+                'content'      => 'another new content',
+                'likes'        => 6,
+                'is_published' =>1,
+
+            ],
+        ];
+
+        foreach($arrayItem as $item){
+            Post::create($item);// добавляет в таблицу данные указанные в  массиве
+        };
+        dd('created');
+
+   }
 }

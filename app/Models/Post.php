@@ -15,5 +15,7 @@ class Post extends Model
      * например можно указать таблицу users
      *  protected $table="users";
      */
-    protected $table="posts";//
+    protected $table="posts";//называние таблицы связанной с моделью
+    protected $guarded  = []; //защищенные поля таблицы,если массив пустой то поля можно заполнять
+   // protected $fillable = []; //разрешенные поля для заполнения
 }
