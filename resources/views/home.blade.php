@@ -1,6 +1,6 @@
 @extends('layouts.main')
 @section('content')
-post
+home
 @endsection
 
 

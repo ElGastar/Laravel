@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MyFirstController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\MainController;
+use App\Http\Controllers\AboutController;
+use App\Http\Controllers\ContactController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,4 +34,9 @@ Route::get('/post/update',[PostController::class,"update"]);
 Route::get('/post/delete',[PostController::class,"delete"]);
 Route::get('/post/first_Or_Create',[PostController::class,"first_Or_Create"]);
 Route::get('/post/update_Or_Create',[PostController::class,"update_Or_Create"]);
+
+Route::get('/main',[MainController::class,"index"])->name('main.index');
+Route::get('/about',[AboutController::class,"index"])->name('about.index');
+Route::get('/contacts',[ContactController::class,"index"])->name('contacts.index');
+
 
