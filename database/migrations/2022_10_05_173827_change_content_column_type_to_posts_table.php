@@ -15,7 +15,7 @@ class ChangeContentColumnTypeToPostsTable extends Migration
     {
         Schema::table('posts', function (Blueprint $table) {
             $table->string('post_content')->change();//изменяем тип колонки content с text на string, post_content потому,что
-            //предидущем коммите меняли content на post_content
+            //предыдущем коммите меняли content на post_content
             //и когда вызываем php artisan migrate, content меняется на post_content
         });
     }
