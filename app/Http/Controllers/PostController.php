@@ -59,6 +59,9 @@ class PostController extends Controller
         return redirect()->route('posts.index');
 
     }
+    public function show(Post $post){
+        return view('posts.show',['post'=>$post]);
+    }
 
     public function update()
     {
