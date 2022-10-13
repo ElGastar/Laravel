@@ -28,12 +28,13 @@ Route::get('/', function () {
  * @return void
  *
 */
-Route::get('/post',[PostController::class,"index"]);
-Route::get('/post/create',[PostController::class,"create"]);
-Route::get('/post/update',[PostController::class,"update"]);
-Route::get('/post/delete',[PostController::class,"delete"]);
-Route::get('/post/first_Or_Create',[PostController::class,"first_Or_Create"]);
-Route::get('/post/update_Or_Create',[PostController::class,"update_Or_Create"]);
+Route::get('/posts',[PostController::class,"index"])->name('posts.index');
+Route::get('/posts/create',[PostController::class,"create"])->name('posts.create');
+Route::post('/posts',[PostController::class,"store"])->name('posts.store');
+
+Route::get('/posts/delete',[PostController::class,"delete"]);
+Route::get('/posts/first_Or_Create',[PostController::class,"first_Or_Create"]);
+Route::get('/posts/update_Or_Create',[PostController::class,"update_Or_Create"]);
 
 Route::get('/main',[MainController::class,"index"])->name('main.index');
 Route::get('/about',[AboutController::class,"index"])->name('about.index');
