@@ -16,6 +16,12 @@
     <input type="text" name="images" class="form-control" id="images"  value="{{$post->images}}">
   </div>
   <div>  <button type="submit" class="btn btn-primary mt-3">Update</button>
+  <form action="{{(route('posts.destroy',$post->id))}}" method="post">
+  @csrf
+  @method('delete')
+  <button type="submit" class="btn btn-danger mt-3">Delete</button>
+  </form>
+
          <a class="btn btn-primary mt-3" href="{{route('posts.index')}}">Back</a>
   </div>
 

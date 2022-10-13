@@ -92,6 +92,11 @@ class PostController extends Controller
         $post->restore(); // жесткое удаления , если не находит запись с id 3 выдает ошибку
         dd("deleted");
     }
+    public function destroy(Post $post)
+    {
+        $post->delete(); // жесткое удаления , если не находит запись с id 3 выдает ошибку
+        return redirect()->route('posts.index');
+    }
     /**
      * первый параметр ищет сответствующий запись , если не находит, создает новий запись соответствующий второму параметру
      */
