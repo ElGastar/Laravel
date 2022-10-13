@@ -44,8 +44,21 @@ class PostController extends Controller
         // };
         return view('posts.create');
     }
+    /**
+     *нейминг инпутоd формы в файле create.blade
+     *должный совподать с именами колонок в талице posts
+     */
+    public function store()
+    {
+        $data=request()->validate([
+            'title'  =>'string',//проверяет тип
+            'content'=>'string',//проверяет тип
+            'images' =>'string',//проверяет тип
+        ]);
+        Post::create($data);
+        return redirect()->route('posts.index');
 
-
+    }
 
     public function update()
     {
