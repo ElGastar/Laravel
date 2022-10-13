@@ -62,15 +62,27 @@ class PostController extends Controller
     public function show(Post $post){
         return view('posts.show',['post'=>$post]);
     }
+    public function edit(Post $post){
+       return view('posts.edit',['post' => $post]);
+    }
 
-    public function update()
+    public function update(Post $post)
     {
-        $post = Post::find(3);
-        $post->update([
-            'title' => 'title is updated',
-            'likes' => 100, //можно все данные обновить или только некоторые
-        ]);
-        dd("updated");
+       // $post = Post::find(3);
+       // $post->update([
+       //     'title' => 'title is updated',
+       //    'likes' => 100, //можно все данные обновить или только некоторые
+       // ]);
+       // dd("updated");
+       $data = request()->validate([
+           'title'=>'string',
+           'content'=>'string',
+           'images'=>'string',
+       ]);
+       $post->update($data);
+       return redirect()->route('posts.show',$post->id);
+
+
     }
 
 
