@@ -1,20 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-    </head>
-    <body>
-    <div>
-    <nav>
-        <ul>
-            <li>
-            <a href="{{route('main.index')}}">Main</a>
-            <a href="{{route('about.index')}}">About</a>
-            <a href="{{route('contacts.index')}}">Contacts</a>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <link href="{{asset('css/app.css')}}" rel="stylesheet" />
+</head>
+<body>
+<div class="container">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
 
-            </li>
-        </ul>
-    </nav>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link" href="{{route('main.index')}}">Main</a>
+      <a class="nav-item nav-link" href="{{route('about.index')}}">About</a>
+      <a class="nav-item nav-link" href="{{route('contacts.index')}}">Contacts</a>
+      <a class="nav-item nav-link disabled" href="#">Disabled</a>
     </div>
-@yield('content')
+  </div>
+</nav>
+</div>
+<div class="container">
+    <div class="row">
+    @yield('content')
+    </div>
+</div>
+
+
     </body>
 </html>
