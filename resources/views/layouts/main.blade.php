@@ -17,6 +17,7 @@
       <a class="nav-item nav-link" href="{{route('main.index')}}">Main</a>
       <a class="nav-item nav-link" href="{{route('about.index')}}">About</a>
       <a class="nav-item nav-link" href="{{route('contacts.index')}}">Contacts</a>
+      <a class="nav-item nav-link" href="{{route('posts.index')}}">Posts</a>
       <a class="nav-item nav-link disabled" href="#">Disabled</a>
     </div>
   </div>

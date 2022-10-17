@@ -20,4 +20,10 @@ class Post extends Model
     protected $table="posts";//называние таблицы связанной с моделью
     protected $guarded  = []; //защищенные поля таблицы,если массив пустой то поля можно заполнять
    // protected $fillable = []; //разрешенные поля для заполнения
+
+   public function category(){
+
+     return   $this->belongsTo(Category::class,'category_id','id');
+
+   }
 }
