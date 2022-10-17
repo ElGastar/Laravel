@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\Tag;
 
 /**
  * this controller created with command - php artisan make:controlller MyFirstControlle
@@ -15,8 +16,9 @@ class PostController extends Controller
     {
         // $posts = Post::all();// Возвращает тип Collection
         $category = Category::find(2);
-        $post=Post::find(1);
-        dd($post->category->title);
+        $post=Post::find(2);
+        $tags=Tag::find(2);
+        dd($tags->posts);
 
         // return view('posts.index', ['posts' => $posts]);
     }
