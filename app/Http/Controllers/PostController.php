@@ -15,12 +15,9 @@ class PostController extends Controller
     public function index()
     {
         // $posts = Post::all();// Возвращает тип Collection
-        $category = Category::find(2);
-        $post=Post::find(2);
-        $tags=Tag::find(2);
-        dd($tags->posts);
+       $posts=Post::all();
 
-        // return view('posts.index', ['posts' => $posts]);
+        return view('posts.index', ['posts' => $posts]);
     }
 
     public function create()
@@ -47,7 +44,8 @@ class PostController extends Controller
         // foreach($arrayItem as $item){
         //     Post::create($item);// добавляет в таблицу данные указанные в  массиве
         // };
-        return view('posts.create');
+        $categories=Category::all();
+        return view('posts.create',['categories'=>$categories]);
     }
     /**
      *нейминг инпутоd формы в файле create.blade
@@ -59,6 +57,7 @@ class PostController extends Controller
             'title'  =>'string',//проверяет тип
             'content'=>'string',//проверяет тип
             'images' =>'string',//проверяет тип
+            'category_id' =>'',//проверяет тип
         ]);
         Post::create($data);
         return redirect()->route('posts.index');
@@ -68,7 +67,9 @@ class PostController extends Controller
         return view('posts.show',['post'=>$post]);
     }
     public function edit(Post $post){
-       return view('posts.edit',['post' => $post]);
+
+        $categories=Category::all();
+       return view('posts.edit',['post' => $post,'categories'=>$categories]);
     }
 
     public function update(Post $post)
@@ -83,6 +84,7 @@ class PostController extends Controller
            'title'=>'string',
            'content'=>'string',
            'images'=>'string',
+           'category_id' =>'',//проверяет тип
        ]);
        $post->update($data);
        return redirect()->route('posts.show',$post->id);
