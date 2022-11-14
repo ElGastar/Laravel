@@ -1,9 +1,10 @@
 @extends('layouts.main')
 @section('content')
 <ul>
-   <li>{{$post->title}}</li>
-   <li>{{$post->content}}</li>
-   <li>{{$post->images}}</li>
+   <li>Title:{{$post->title}}</li>
+   <li>Content:{{$post->content}}</li>
+   <li>Imgae:{{$post->images}}</li>
+   <li>Category:{{$category}}</li>
 </ul>
 <div>
     <a class="btn btn-info" href="{{route('posts.edit',$post->id)}}">Edit</a>

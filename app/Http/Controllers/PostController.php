@@ -64,7 +64,8 @@ class PostController extends Controller
 
     }
     public function show(Post $post){
-        return view('posts.show',['post'=>$post]);
+        $category=$post->category->title;
+        return view('posts.show',['post'=>$post,'category'=>$category]);
     }
     public function edit(Post $post){
 
