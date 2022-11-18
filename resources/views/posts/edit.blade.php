@@ -23,6 +23,20 @@
             @endforeach
         </select>
     </div>
+    <div class="form-group ">
+        <label for="tags">Tags</label>
+        <!-- очен важно написать name="tags[]" тогда можно получить массив multiple тегов  -->
+        <select multiple class=" form-select" aria-label="Default select example" name="tags[]">
+            @foreach($tags as $tag)
+
+            <option
+            @foreach($post->tags as $postTag)
+           {{$tag->id === $postTag->id ? 'selected' : ''}}
+            @endforeach
+            value="{{$tag->id}}">{{$tag->title}}</option>
+            @endforeach
+        </select>
+    </div>
     <a class="btn btn-primary mt-3" href="{{route('posts.index')}}">Back</a>
     <button type="submit" class="btn btn-primary mt-3">Update</button>
 

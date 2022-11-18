@@ -16,7 +16,7 @@ class PostController extends Controller
     public function index()
     {
         // $posts = Post::all();// Возвращает тип Collection
-       $posts=Post::all();
+        $posts = Post::all();
         return view('posts.index', ['posts' => $posts]);
     }
 
@@ -44,9 +44,9 @@ class PostController extends Controller
         // foreach($arrayItem as $item){
         //     Post::create($item);// добавляет в таблицу данные указанные в  массиве
         // };
-        $categories=Category::all();
-        $tags=Tag::all();
-        return view('posts.create',['categories'=>$categories,'tags'=>$tags]);
+        $categories = Category::all();
+        $tags = Tag::all();
+        return view('posts.create', ['categories' => $categories, 'tags' => $tags]);
     }
     /**
      *нейминг инпутоd формы в файле create.blade
@@ -54,49 +54,56 @@ class PostController extends Controller
      */
     public function store()
     {
-        $data=request()->validate([
-            'title'  =>'string',//проверяет тип
-            'content'=>'string',//проверяет тип
-            'images' =>'string',//проверяет тип
-            'category_id' =>'',//проверяет тип
-            'tags'=>''
+        $data = request()->validate([
+            'title'  => 'string', //проверяет тип
+            'content' => 'string', //проверяет тип
+            'images' => 'string', //проверяет тип
+            'category_id' => '', //проверяет тип
+            'tags' => ''
         ]);
-        $tags=$data['tags'];
+        $tags = $data['tags'];
         unset($data['tags']);
 
-        $post=Post::create($data);
-      $post->tags()->attach($tags);
+        $post = Post::create($data);
+        $post->tags()->attach($tags);
         return redirect()->route('posts.index');
-
     }
-    public function show(Post $post){
-        $category=$post->category->title;
-        return view('posts.show',['post'=>$post,'category'=>$category]);
-    }
-    public function edit(Post $post){
+    public function show(Post $post)
+    {
+        $category = $post->category->title;
 
-        $categories=Category::all();
-       return view('posts.edit',['post' => $post,'categories'=>$categories]);
+        return view('posts.show', ['post' => $post, 'category' => $category, 'tags' => $post->tags]);
+    }
+    public function edit(Post $post)
+    {
+
+        $categories = Category::all();
+        $tags = Tag::all();
+
+
+        return view('posts.edit', ['post' => $post, 'categories' => $categories, 'tags' => $tags]);
     }
 
     public function update(Post $post)
     {
-       // $post = Post::find(3);
-       // $post->update([
-       //     'title' => 'title is updated',
-       //    'likes' => 100, //можно все данные обновить или только некоторые
-       // ]);
-       // dd("updated");
-       $data = request()->validate([
-           'title'=>'string',
-           'content'=>'string',
-           'images'=>'string',
-           'category_id' =>'',//проверяет тип
-       ]);
-       $post->update($data);
-       return redirect()->route('posts.show',$post->id);
-
-
+        // $post = Post::find(3);
+        // $post->update([
+        //     'title' => 'title is updated',
+        //    'likes' => 100, //можно все данные обновить или только некоторые
+        // ]);
+        // dd("updated");
+        $data = request()->validate([
+            'title' => 'string',
+            'content' => 'string',
+            'images' => 'string',
+            'category_id' => '', //проверяет тип
+            'tags' => '',
+        ]);
+        $tags = $data['tags'];
+        unset($data['tags']);
+        $post->update($data);
+        $post->tags()->sync($tags);
+        return redirect()->route('posts.show', $post->id);
     }
 
 

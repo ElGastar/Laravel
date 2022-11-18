@@ -5,6 +5,15 @@
     <li>Content:{{$post->content}}</li>
     <li>Imgae:{{$post->images}}</li>
     <li>Category:{{$category}}</li>
+    <li>Tags:
+    <ul>
+     @foreach($tags as $tag)
+     <li>{{$tag->title}}</li>
+     @endforeach
+
+    </ul>
+
+    </li>
 </ul>
 <div>
     <a class="btn btn-info" href="{{route('posts.edit',$post->id)}}">Edit</a>
