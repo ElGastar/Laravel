@@ -6,6 +6,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Tag;
+use App\Models\PostTag;
 
 /**
  * this controller created with command - php artisan make:controlller MyFirstControlle
@@ -16,7 +17,6 @@ class PostController extends Controller
     {
         // $posts = Post::all();// Возвращает тип Collection
        $posts=Post::all();
-
         return view('posts.index', ['posts' => $posts]);
     }
 
@@ -45,7 +45,8 @@ class PostController extends Controller
         //     Post::create($item);// добавляет в таблицу данные указанные в  массиве
         // };
         $categories=Category::all();
-        return view('posts.create',['categories'=>$categories]);
+        $tags=Tag::all();
+        return view('posts.create',['categories'=>$categories,'tags'=>$tags]);
     }
     /**
      *нейминг инпутоd формы в файле create.blade
@@ -58,8 +59,20 @@ class PostController extends Controller
             'content'=>'string',//проверяет тип
             'images' =>'string',//проверяет тип
             'category_id' =>'',//проверяет тип
+            'tags'=>''
         ]);
-        Post::create($data);
+        $tags=$data['tags'];
+        unset($data['tags']);
+
+        $post=Post::create($data);
+        foreach($tags as $tag){
+
+            PostTag::firstOrCreate(
+                [
+                'post_id'=> $post->id,
+                'tag_id'=>$tag,
+                ]);
+        }
         return redirect()->route('posts.index');
 
     }
