@@ -6,14 +6,23 @@
     <div class="form-group">
         <label for="title">Title</label>
         <input type="text" name="title" class="form-control" id="title" placeholder="" value="{{$post->title}}">
+        @error('title')
+         <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
     </div>
     <div class="form-group">
         <label for="title">Content</label>
         <textarea type="text" name="content" class="form-control" id="content">{{$post->content}}</textarea>
+        @error('content')
+         <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
     </div>
     <div class="form-group">
         <label for="title">Image</label>
         <input type="text" name="images" class="form-control" id="images" value="{{$post->images}}">
+        @error('images')
+         <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
     </div>
     <div class="form-group ">
         <label for="title">Category</label>
@@ -22,6 +31,9 @@
             <option {{$category->id === $post->category->id ? 'selected' : ''}} value="{{$category->id}}">{{$category->title}}</option>
             @endforeach
         </select>
+        @error('category_id')
+         <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
     </div>
     <div class="form-group ">
         <label for="tags">Tags</label>
