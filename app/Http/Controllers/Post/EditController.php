@@ -10,12 +10,7 @@ use App\Models\Post;
 
 class EditController extends Controller
 {
-    /**
-     * Handle the incoming request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function __invoke(Post $post)
     {
         $categories = Category::all();

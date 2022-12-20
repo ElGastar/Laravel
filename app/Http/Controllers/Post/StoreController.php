@@ -3,26 +3,14 @@
 namespace App\Http\Controllers\Post;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Requests\Post\StoreRequest;
 use App\Models\Post;
 
 class StoreController extends Controller
 {
-    /**
-     * Handle the incoming request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function __invoke(Post $post)
+    public function __invoke(StoreRequest $request, Post $post)
     {
-        $data = request()->validate([
-            'title'  => 'string', //проверяет тип
-            'content' => 'string', //проверяет тип
-            'images' => 'string', //проверяет тип
-            'category_id' => '', //проверяет тип
-            'tags' => ''
-        ]);
+        $data = $request->validate();
         $tags = $data['tags'];
         unset($data['tags']);
 

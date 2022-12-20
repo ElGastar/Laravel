@@ -4,18 +4,14 @@ namespace App\Http\Controllers\Post;
 
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Post\UpdateRequest;
 use Illuminate\Http\Request;
 use App\Models\Post;
 
 class UpdateController extends Controller
 {
-    /**
-     * Handle the incoming request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function __invoke(Post $post)
+
+    public function __invoke(UpdateRequest $request, Post $post)
     {
         // $post = Post::find(3);
         // $post->update([
@@ -23,13 +19,7 @@ class UpdateController extends Controller
         //    'likes' => 100, //можно все данные обновить или только некоторые
         // ]);
         // dd("updated");
-        $data = request()->validate([
-            'title' => 'string',
-            'content' => 'string',
-            'images' => 'string',
-            'category_id' => '', //проверяет тип
-            'tags' => '',
-        ]);
+        $data = $request->validate();
         $tags = $data['tags'];
         unset($data['tags']);
         $post->update($data);

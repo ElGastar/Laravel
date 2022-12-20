@@ -1,18 +1,9 @@
-Урок 25
-создает однометодный контроллер в указанной папке , в нашем случай это папка Post
+Урок 26
+
+создает класс Request с помощю которого можно валидировать формы 
+класс создается в папке App\Http\Requests, что бы доваить подпаку нужно указать <directory_name>, в нашем случай это папка Post, так как все контроллеры которые обрабатывают формы находятся тоже в папке Post 
+
 ```sh
-php artisan make:controller <directory_name>/<name>Controller --invokable
+php artisan make:request <directory_name>/StoreRequest
 ```
 
-добавляет namespace Post к контроллерам, так как они находятся а папке Post
-```sh
-Route::group(['namespace'=>'Post'],function(){
-    Route::get('/posts','IndexController')->name('posts.index');
-    Route::get('/posts/create','CreateController')->name('posts.create');
-    Route::post('/posts','StoreController')->name('posts.store');
-    Route::get('/posts/{post}','ShowController')->name('posts.show');
-    Route::get('/posts/{post}/edit','EditController')->name('posts.edit');
-    Route::patch('/posts/{post}','UpdateController')->name('posts.update');
-    Route::delete('/posts/{post}','DestroyController')->name('posts.destroy');
-});
-```

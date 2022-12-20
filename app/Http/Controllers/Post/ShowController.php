@@ -8,12 +8,7 @@ use App\Models\Post;
 
 class ShowController extends Controller
 {
-    /**
-     * Handle the incoming request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+  
     public function __invoke(Post $post)
     {
         $category = $post->category->title;
