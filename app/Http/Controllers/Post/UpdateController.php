@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Post;
 
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Post\BaseController;
 use App\Http\Requests\Post\UpdateRequest;
-use Illuminate\Http\Request;
+
 use App\Models\Post;
 
-class UpdateController extends Controller
+class UpdateController extends BaseController
 {
 
     public function __invoke(UpdateRequest $request, Post $post)
@@ -19,11 +19,12 @@ class UpdateController extends Controller
         //    'likes' => 100, //можно все данные обновить или только некоторые
         // ]);
         // dd("updated");
-        $data = $request->validate();
-        $tags = $data['tags'];
-        unset($data['tags']);
-        $post->update($data);
-        $post->tags()->sync($tags);
+
+        $data = $request->validated();
+
+
+        $this->service->update($post, $data);
+
         return redirect()->route('posts.show', $post->id);
     }
 }

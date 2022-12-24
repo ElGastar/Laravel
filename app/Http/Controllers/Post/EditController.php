@@ -8,7 +8,7 @@ use App\Models\Tag;
 use App\Models\Category;
 use App\Models\Post;
 
-class EditController extends Controller
+class EditController extends BaseController
 {
 
     public function __invoke(Post $post)
