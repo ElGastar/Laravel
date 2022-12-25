@@ -6,7 +6,10 @@
     <a href="{{route('posts.show',$post->id)}}"><li>{{$post->title}}</li></a>
 </ul>
 
+
 @endforeach
+
+<div> {{$posts->links()}}</div>
 
 <a class="btn btn-primary" href="{{route('posts.create')}}">Add</a>
 
